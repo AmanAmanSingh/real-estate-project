@@ -28,10 +28,10 @@ const locationInfoSchema = new mongoose.Schema({
     longitude: {
         type: String
     },
-    basicInfo: {
+    generalInfo: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Basicinfo",
+        ref: "generals",
     }
 })
 
-module.exports = mongoose.model("Location", locationInfoSchema)
+module.exports = mongoose.model("locations", locationInfoSchema)
