@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 
 const propertyDeatilScehma = new mongoose.Schema({
+    ppdid: {
+        type: String,
+        default: function () {
+            const year = new Date().getFullYear().toString().substr(-2);
+            const randomNum = Math.floor(Math.random() * 9000) + 1000;
+            return `PPDID${year}${randomNum}`;
+        }
+    },
     length: {
         type: Number
     },
@@ -57,8 +65,8 @@ const propertyDeatilScehma = new mongoose.Schema({
     },
     basicInfo: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Basicinfo",
+        ref: "basicinfos",
     }
 })
 
-module.exports = mongoose.model("Property", propertyDeatilScehma)
+module.exports = mongoose.model("properties", propertyDeatilScehma)

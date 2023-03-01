@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { idContext } from "../../context/idcontext";
 import Header from "../../header/header";
 import Sidebar from "../../sidebar/sidebar";
 import "./basic.css";
 const BasicInfoForm = () => {
+
+    const basicContext = useContext(idContext);
+    // console.log(basicContext);
+
     const navigate = useNavigate();
 
     const [formValues, setFormValues] = useState({
@@ -38,18 +43,26 @@ const BasicInfoForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         // console.log(formValues, "handlesubmit")
-        try {
-            const response = await fetch('http://localhost:8080/api/v4/basic', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formValues),
-            });
+
+        await fetch('http://localhost:8080/api/v4/basic', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formValues),
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data, "resbasic");
+            basicContext.setbasicid(data.basicdetails._id);
+            // debugger
             navigate("/propertyinfo")
-        } catch (err) {
-            console.log(err)
-        }
+        }).catch(e => {
+            console.log(e)
+        })
+
+
+
     };
 
     return (

@@ -1,4 +1,6 @@
 import './App.css';
+import { useState } from 'react';
+import { idContext } from './components/context/idcontext';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import BasicInfoForm from './components/addproperty/basic/basicform';
 import GeneralFormInfo from './components/addproperty/general/generalform';
@@ -14,21 +16,26 @@ import SignIn from './components/SignIn/SignIn';
 // import SignIn from './components/SignIn/SignIn';
 // import SignUp from './components/SignUp/SignUp';
 function App() {
+  const [basicid, setbasicid] = useState("");
+  const [propertyid, setpropertyid] = useState("");
+  const [generalid, setgeneralid] = useState("");
+  const [locationid, setlocationid] = useState("");
+
   return (
     <>
-      <BrowserRouter>
-
-        <Routes>
-          <Route path='/' element={<SignIn />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/propertylist' element={<PropertyList />} />
-          <Route path='/basicinfo' element={<Protected><BasicInfoForm /></Protected>} />
-          <Route path='/propertyinfo' element={<Protected><PropertyFormInfo /></Protected>} />
-          <Route path='/generalinfo' element={<Protected><GeneralFormInfo /></Protected>} />
-          <Route path='/locationinfo' element={<Protected> <LocationFormInfo /></Protected>} />
-        </Routes>
-      </BrowserRouter>
-
+      <idContext.Provider value={{ basicid, setbasicid, propertyid, setpropertyid, generalid, setgeneralid, locationid, setlocationid }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<SignIn />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/propertylist' element={<Protected><PropertyList /></Protected>} />
+            <Route path='/basicinfo' element={<Protected><BasicInfoForm /></Protected>} />
+            <Route path='/propertyinfo' element={<Protected><PropertyFormInfo /></Protected>} />
+            <Route path='/generalinfo' element={<Protected><GeneralFormInfo /></Protected>} />
+            <Route path='/locationinfo' element={<Protected> <LocationFormInfo /></Protected>} />
+          </Routes>
+        </BrowserRouter>
+      </idContext.Provider>
     </>
 
   );

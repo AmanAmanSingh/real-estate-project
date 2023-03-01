@@ -5,7 +5,7 @@ const Header = () => {
     const navigate = useNavigate()
     const Logoutbutton = () => {
         localStorage.setItem("authtoken", "");
-        localStorage.removeItem("id");
+        localStorage.setItem("id", "");
         navigate("/")
     };
     const userid = localStorage.getItem("id").slice(0, -18);

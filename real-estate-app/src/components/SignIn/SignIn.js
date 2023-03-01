@@ -2,13 +2,14 @@ import React from "react"
 import { useState } from "react"
 import "./SignIn.css"
 import { Link, Navigate, useNavigate } from "react-router-dom"
-const link = "http://localhost:8080"
+// const link = "http://localhost:8080"
 const SignIn = () => {
     const navigate = useNavigate()
     const [userdetail, setuserdetail] = useState({
         email: "",
         password: "",
     })
+    const [err, setError] = useState("")
 
     const handlechange = (e) => {
         setuserdetail({ ...userdetail, [e.target.name]: e.target.value })
@@ -16,25 +17,29 @@ const SignIn = () => {
     const handlesubmit = async (e) => {
         e.preventDefault()
 
-        const data = await fetch(`${link}/signin`, {
+        const data = await fetch(`http://localhost:8080/signin`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(userdetail),
-        }).then((data) => data.json())
-            .then((response) => {
-                console.log(response, "res");
+        }).then((data) => {
+            return data.json()
+        }).then((response) => {
+            // console.log(response, "res");
+            if (response.status == "failed") {
+                setError(response.message)
+            } else {
                 localStorage.setItem("authtoken", response.token);
                 localStorage.setItem("id", response.id);
                 navigate("/propertylist")
-            }).catch(e => {
-                console.log(e)
-            })
-        // if (data.status === "success") {
-        //     console.log(data.message)
-        // }
+            }
+        }).catch(e => {
+            // console.log(e, "e")
+            setError("credentials not Match")
+            navigate("/")
+        })
     }
 
     return (
@@ -69,6 +74,7 @@ const SignIn = () => {
                         </form>
                     </div>
                 </div>
+                {err && <h5>{err}</h5>}
                 <div id="noaccount"><h4>Don't have an Account ? <Link to="/signup"> Sign Up</Link>
                 </h4>
                 </div>

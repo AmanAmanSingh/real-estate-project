@@ -38,4 +38,4 @@ const basicInfoSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-module.exports = mongoose.model("Basicinfo", basicInfoSchema)
+module.exports = mongoose.model("basicinfos", basicInfoSchema)

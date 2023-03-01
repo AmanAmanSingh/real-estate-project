@@ -31,10 +31,10 @@ const generalInfoScehma = new mongoose.Schema({
         type: String,
         required: true
     },
-    basicInfo: {
+    propertyInfo: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Basicinfo",
+        ref: "properties",
     }
 
 })
-module.exports = mongoose.model("General", generalInfoScehma)
+module.exports = mongoose.model("generals", generalInfoScehma)

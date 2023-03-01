@@ -9,38 +9,38 @@ import Sidebar from '../sidebar/sidebar';
 const PropertyList = () => {
 
     const [search, setSearch] = useState("");
-    const [basicCollectionTemplet, setBasicCollectionTemplet] = useState([]);
-    const [genralCollectionTemplet, setGeneralCollectionTemplet] = useState([]);
-    const [propertyCollectionTemplet, setPropertyCollectionTemplet] = useState([]);
-    const [locationCollectionTemplet, setLocationCollectionTemplet] = useState([]);
-    const [ppdid, setPpdid] = useState("")
+    // const [basicCollectionTemplet, setBasicCollectionTemplet] = useState([]);
+    // const [genralCollectionTemplet, setGeneralCollectionTemplet] = useState([]);
+    // const [propertyCollectionTemplet, setPropertyCollectionTemplet] = useState([]);
+    // const [locationCollectionTemplet, setLocationCollectionTemplet] = useState([]);
+    // const [ppdid, setPpdid] = useState("")
 
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/alldata", {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }).then(res => {
-            return res.json();
-        }).then(data => {
-            console.log(data, "data");
-            setBasicCollectionTemplet(data.basicscollection);
-            setGeneralCollectionTemplet(data.generalcollection);
-            setPropertyCollectionTemplet(data.propertycollection);
-            setLocationCollectionTemplet(data.locationcollection);
-            setPpdid(Date.now());
-        }).catch(e => {
-            console.log(e);
-        })
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/api/alldata", {
+    //         method: "GET",
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     }).then(res => {
+    //         return res.json();
+    //     }).then(data => {
+    //         console.log(data, "data");
+    //         setBasicCollectionTemplet(data.basicscollection);
+    //         setGeneralCollectionTemplet(data.generalcollection);
+    //         setPropertyCollectionTemplet(data.propertycollection);
+    //         setLocationCollectionTemplet(data.locationcollection);
+    //         setPpdid(Date.now());
+    //     }).catch(e => {
+    //         console.log(e);
+    //     })
 
-    }, []);
+    // }, []);
 
-    console.log(basicCollectionTemplet, "basic")
-    console.log(genralCollectionTemplet, "general");
-    console.log(propertyCollectionTemplet, "property");
-    console.log(locationCollectionTemplet, "location")
+    // console.log(basicCollectionTemplet, "basic")
+    // console.log(genralCollectionTemplet, "general");
+    // console.log(propertyCollectionTemplet, "property");
+    // console.log(locationCollectionTemplet, "location")
 
 
 

@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { idContext } from "../../context/idcontext";
 import Header from "../../header/header";
 import Sidebar from "../../sidebar/sidebar";
 import "./property.css"
 const PropertyFormInfo = () => {
+
+    const propertyContext = useContext(idContext);
+    let basicInfo = propertyContext.basicid;
+    console.log(basicInfo)
+    // console.log(propertyContext, "p")
+
+
     const navigate = useNavigate()
     const [propertyData, setPropertyData] = useState({
         length: "",
@@ -19,7 +27,6 @@ const PropertyFormInfo = () => {
         lift: "no",
         electricity: "",
         facing: "east",
-
     });
     const handleClear = () => {
         setPropertyData({
@@ -45,20 +52,29 @@ const PropertyFormInfo = () => {
     };
 
     const handleSubmit = async (event) => {
+        const dataToSend = { ...propertyData, basicInfo };
         event.preventDefault();
         // console.log(propertyData);
-        try {
-            const response = await fetch('http://localhost:8080/api/v4/property', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(propertyData),
-            })
-            navigate("/generalinfo");
-        } catch (err) {
-            console.log(err)
-        }
+        await fetch('http://localhost:8080/api/v4/property', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSend),
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data, "resbasic");
+            propertyContext.setpropertyid(data.propertydetails._id);
+            // debugger
+            // navigate("/generalinfo");
+        }).catch(e => {
+            console.log(e)
+        })
+
+
+
+
     };
 
     return (
