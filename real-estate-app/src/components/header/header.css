@@ -1,0 +1,40 @@
+.header {
+    background-color: #f6f4f4;
+    font-size: normal;
+}
+
+.header {
+    margin-left: 15%;
+    border-bottom: 1px solid pink;
+    height: 75px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: larger;
+}
+
+.left {
+    margin-left: 10%;
+    font-size: large;
+}
+
+.right {
+    margin-right: 5%;
+    font-size: large;
+}
+
+.userID {
+    font-size: large;
+    padding: auto;
+    border-style: none;
+    height: 10%;
+
+}
+
+
+.icon_search {
+    position: relative;
+
+}

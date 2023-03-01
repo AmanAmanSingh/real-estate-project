@@ -24,6 +24,8 @@ const propertyDeatilScehma = new mongoose.Schema({
     },
     attached: {
         type: String,
+        enum: ["yes", "no"],
+        default: "yes",
     },
     westernToilet: {
         type: String,
@@ -38,6 +40,7 @@ const propertyDeatilScehma = new mongoose.Schema({
     parking: {
         type: String,
         enum: ["yes", "no"],
+        default: "no",
     },
     lift: {
         type: String,
@@ -45,14 +48,12 @@ const propertyDeatilScehma = new mongoose.Schema({
         default: "no"
     },
     electricity: {
-        type: Number,
+        type: String,
     },
     facing: {
         type: String,
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        enum: ["east", "west", "north", "south"],
+        default: "east",
     },
     basicInfo: {
         type: mongoose.Schema.Types.ObjectId,

@@ -23,14 +23,10 @@ const locationInfoSchema = new mongoose.Schema({
         type: String
     },
     latitude: {
-        type: Number
+        type: String
     },
     longitude: {
-        type: Number
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        type: String
     },
     basicInfo: {
         type: mongoose.Schema.Types.ObjectId,
