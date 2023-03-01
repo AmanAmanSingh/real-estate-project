@@ -123,4 +123,4 @@ const PropertyList = () => {
     )
 }
 
-export default PropertyList;
+// export default PropertyList;

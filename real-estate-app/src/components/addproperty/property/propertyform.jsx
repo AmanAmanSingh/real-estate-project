@@ -8,7 +8,7 @@ const PropertyFormInfo = () => {
 
     const propertyContext = useContext(idContext);
     let basicInfo = propertyContext.basicid;
-    console.log(basicInfo)
+    // console.log(basicInfo)
     // console.log(propertyContext, "p")
 
 
@@ -64,10 +64,10 @@ const PropertyFormInfo = () => {
         }).then(res => {
             return res.json();
         }).then(data => {
-            console.log(data, "resbasic");
+            // console.log(data, "resbasic");
             propertyContext.setpropertyid(data.propertydetails._id);
             // debugger
-            // navigate("/generalinfo");
+            navigate("/generalinfo");
         }).catch(e => {
             console.log(e)
         })

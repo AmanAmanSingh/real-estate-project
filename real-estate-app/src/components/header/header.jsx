@@ -9,7 +9,6 @@ const Header = () => {
         navigate("/")
     };
     const userid = localStorage.getItem("id").slice(0, -18);
-    console.log(userid)
     return (
         <div className="header">
             <div className="left"> USER ID:{userid}

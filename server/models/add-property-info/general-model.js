@@ -22,7 +22,7 @@ const generalInfoScehma = new mongoose.Schema({
     feature: {
         type: String,
         enum: ["gym", "pool", "garden", "auditorium"],
-        default: "garden"
+        default: "gym"
     },
     PPDpackage: {
         type: String,

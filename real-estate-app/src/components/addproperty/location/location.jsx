@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { idContext } from "../../context/idcontext";
 import Header from "../../header/header";
 import Sidebar from "../../sidebar/sidebar";
 import "./location.css"
 const LocationFormInfo = () => {
+    const locationContext = useContext(idContext);
+    const generalInfo = locationContext.generalid;
+
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: "",
@@ -36,19 +40,24 @@ const LocationFormInfo = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const dataToSend = { ...formData, generalInfo };
+
         fetch("http://localhost:8080/api/v4/location", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
-        }).then(res => res.json())
-            .then(data => {
-                console.log(data)
-                navigate("/propertylist");
-            }).catch(err => {
-                console.log(err)
-            })
+            body: JSON.stringify(dataToSend),
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            console.log(data);
+            locationContext.setgeneralid(data.generaldetails._id);
+            navigate("/propertylist");
+        }).catch(error => {
+            navigate("/propertylist");
+            console.error(error);
+        })
     };
 
     return (

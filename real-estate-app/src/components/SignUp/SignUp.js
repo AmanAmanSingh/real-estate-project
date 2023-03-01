@@ -26,13 +26,11 @@ const SignUp = () => {
         }).then((data) => data.json())
             .then(data => {
                 console.log(data)
+                navigate("/");
             }).catch(e => {
                 console.log(e)
             })
 
-        // if (data.status === "success") {
-        //     navigate("/");
-        // }
     };
     return (
         <>

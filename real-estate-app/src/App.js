@@ -9,7 +9,7 @@ import PropertyFormInfo from './components/addproperty/property/propertyform';
 //
 import Sidebar from "./components/sidebar/sidebar";
 import Header from "./components/header/header";
-import PropertyList from "./components/property_listing/property_list"
+import PropertyList from './components/property_listing/propertylist';
 import Protected from './components/protectedRoutes/protectedroutes';
 import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
@@ -28,7 +28,7 @@ function App() {
           <Routes>
             <Route path='/' element={<SignIn />} />
             <Route path='/signup' element={<SignUp />} />
-            <Route path='/propertylist' element={<Protected><PropertyList /></Protected>} />
+            <Route path='/propertylist' element={<Protected><PropertyList /> </Protected>} />
             <Route path='/basicinfo' element={<Protected><BasicInfoForm /></Protected>} />
             <Route path='/propertyinfo' element={<Protected><PropertyFormInfo /></Protected>} />
             <Route path='/generalinfo' element={<Protected><GeneralFormInfo /></Protected>} />

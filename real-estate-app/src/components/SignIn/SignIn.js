@@ -27,7 +27,7 @@ const SignIn = () => {
         }).then((data) => {
             return data.json()
         }).then((response) => {
-            // console.log(response, "res");
+
             if (response.status == "failed") {
                 setError(response.message)
             } else {

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { idContext } from "../../context/idcontext";
 import Header from "../../header/header";
 import Sidebar from "../../sidebar/sidebar";
 import "./general.css";
 
 const GeneralFormInfo = () => {
     const navigate = useNavigate();
+
+    const generalContext = useContext(idContext);
+
+    let propertyInfo1 = generalContext.propertyid;
 
     const [username, setUsername] = useState("");
     const [mobile, setMobile] = useState("");
@@ -14,6 +19,12 @@ const GeneralFormInfo = () => {
     const [feature, setFeature] = useState("");
     const [PPDpackage, setPPDPackage] = useState("");
     const [image, setImage] = useState(null);
+    const [propertyInfo, setpropertyInfo] = useState("");
+
+    useEffect(() => {
+        setpropertyInfo(propertyInfo1)
+    }, [])
+
 
     const handleClear = () => {
         setUsername("")
@@ -36,19 +47,21 @@ const GeneralFormInfo = () => {
         formData.append("feature", feature);
         formData.append("PPDpackage", PPDpackage);
         formData.append("image", image);
-
+        formData.append("propertyInfo", propertyInfo);
 
         fetch("http://localhost:8080/api/v4/general", {
             method: "POST",
             body: formData,
-        }).then((response) => response.json())
-            .then((data) => {
-                console.log(data, "generalinfo");
-                navigate("/locationinfo")
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        }).then((response) => {
+            return response.json()
+        }).then((data) => {
+            console.log(data, "generalinfo");
+            generalContext.setgeneralid(data.generaldetails._id);
+            // debugger
+            navigate("/locationinfo")
+        }).catch((error) => {
+            console.error(error);
+        });
     };
 
     return (
@@ -114,8 +127,8 @@ const GeneralFormInfo = () => {
 
 
                             <label>
-                                Feature:
-                                <select value={feature} onChange={(event) => setFeature(event.target.value)}>
+                                Feature <span style={{ color: "red" }}>*</span>:
+                                <select value={feature} onChange={(event) => setFeature(event.target.value)} required>
                                     <option value="gym">Gym</option>
                                     <option value="pool">Pool</option>
                                     <option value="garden">Garden</option>

@@ -12,10 +12,8 @@ const propertyInfo = require("../models/add-property-info/propertydetail-model")
 
 //POST END POINT FOR BASIC DETAILS 
 router.post("/api/v4/basic", async (req, res) => {
-    // console.log(req.body)
+
     try {
-        // const { property, negotable, price, ownership, propertyAge,
-        //     propertyApproved, propertyDescription, bankLoan } = req.body
 
         const basicdetails = await BasicInfo.create(req.body)
         return res.status(200).json({
@@ -99,7 +97,6 @@ router.get("/api/alldata", async (req, res) => {
                 }
             }
         })
-
         return res.status(200).json({
             message: "success",
             locationcollection,

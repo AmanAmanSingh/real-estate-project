@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import './property.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Sidebar from '../sidebar/sidebar';
+import Header from '../header/header';
 
 
 const PropertyList = () => {
 
     const [search, setSearch] = useState("");
     const [propertyTemplet, setPropertyTemplet] = useState([]);
-    const PPDID = Date.now();
-
+    const [showimage, setShowImage] = useState(false)
 
     useEffect(() => {
         fetch("http://localhost:8080/api/alldata", {
@@ -21,17 +22,24 @@ const PropertyList = () => {
             return res.json();
         }).then(data => {
             console.log(data);
-            setPropertyTemplet(data)
-
+            setPropertyTemplet(data.locationcollection);
         }).catch(e => {
             console.log(e);
         })
 
     }, [])
+
+    const openImage = () => {
+        setShowImage(true)
+    }
+
+
     console.log(propertyTemplet)
 
     return (
         <>
+            <Header />
+            <Sidebar />
             <div className='Search'>
                 <div className='Search_input'>
                     <input type="text" placeholder='Search PPD ID' id="searchInput" onChange={(event) => {
@@ -39,7 +47,6 @@ const PropertyList = () => {
                     }} />
                     <button type="submit"><i className="fa fa-search"></i></button>
                 </div>
-
                 <div className='Add_property'>
                     <Link to="/basicinfo"><button> +Add Property</button></Link>
                 </div>
@@ -61,24 +68,30 @@ const PropertyList = () => {
                 <div>
                     {propertyTemplet.map((val, index) => {
                         return (
-                            < div className='data' key={`${PPDID}${index}`}>
-                                <div className='item'>{PPDID} </div>
-                                <div className='item'><i className="fa fa-camera fa-2x" aria-hidden="true"></i></div>
-                                <div className='item'>{ }</div>
-                                <div className='item'>988754322</div>
-                                <div className='item'>1200</div>
-                                <div className='item'>02</div>
-                                <div className='item'>sold</div>
-                                <div className='item'>09</div>
-                                <div className='item'>Action</div>
-                            </div>
+                            <>
+                                < div className='data' key={val.generalInfo.propertyInfo.ppdid}>
+                                    <div className='item'>{val.generalInfo.propertyInfo.ppdid} </div>
+                                    <div className='item' ><i className="fa fa-camera fa-2x" aria-hidden="true"></i></div>
+                                    <div className='item'>{val.generalInfo.propertyInfo.basicInfo.property}</div>
+                                    <div className='item'>{val.generalInfo.mobile}</div>
+                                    <div className='item'>{val.generalInfo.propertyInfo.totalArea}</div>
+                                    <div className='item'>02</div>
+                                    <div className='item'>sold</div>
+                                    <div className='item'>09</div>
+                                    <div className='item'>Action</div>
+                                </div>
+                            </>
                         )
-                    }
-                    )}
+                    })}
+
+
                 </div>
             </div>
         </>
     )
 }
 
-// export default PropertyList;
+export default PropertyList;
+
+
+{/* <img src={`http://localhost:8080/api/images/${val.generalInfo.image}`} alt="" /> */ }
