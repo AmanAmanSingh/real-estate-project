@@ -22,17 +22,16 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-left: 60%;
-    width: 60%;
+    justify-content: flex-end;
+    margin-right: 5%;
 }
 
 .Add_property button {
-    background-color: #6AB4F8;
-    padding: .3rem;
+    background-color: #6ab4f8;
+    padding: 0.5rem 1rem;
     border-radius: 1.5rem;
     color: white;
-    border: transparent;
+    border: none;
     font-size: normal;
 }
 
@@ -42,60 +41,69 @@ body {
 }
 
 .Search_input input {
-    padding: .4rem;
+    padding: 0.5rem;
     border-radius: 1rem;
-    border: transparent;
+    border: none;
     width: auto;
 }
 
 .Search_input button {
-    padding: .1rem .1rem;
-    border-radius: .1rem;
-    border: transparent;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #6ab4f8;
+    color: white;
+    cursor: pointer;
 }
 
 .attributes {
     margin: 1rem 1rem;
-    /* text-align: center; */
     width: 78%;
     height: 2.5rem;
-    border: transparent;
+    border: none;
     background-color: #FFFFFF;
     margin-left: 22%;
     border-radius: 5rem;
     font-size: large;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .name {
-    display: inline-block;
-    padding: .2rem .2rem .2rem;
-    margin-left: none;
+    padding: 0.5rem;
     margin-left: 2rem;
     width: 5rem;
-    color: #284E91;
+    color: #284e91;
 }
 
 .data {
-    margin: .1rem .1rem;
+    margin: 0.5rem 0.1rem;
     text-align: center;
-    border: transparent;
+    border: none;
     background-color: #FFFFFF;
     margin-left: 22%;
     width: 78%;
     height: 2.5rem;
     border-radius: 5rem;
     font-size: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .item {
-    display: inline-block;
-    padding: .2rem .2rem .2rem;
-    margin-left: none;
-    margin-left: 2rem;
+    padding: 0.5rem;
     width: 5rem;
     color: black;
     font-size: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item i {
+    color: #6ab4f8;
 }
 
 .map-container {
@@ -110,13 +118,25 @@ body {
 
 .item {
     padding: 0.5rem;
-    /* border: 1px solid black; */
     box-sizing: border-box;
     flex-basis: calc(33.33% - 2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 768px) {
     .item {
         flex-basis: calc(50% - 2px);
+    }
+
+    .attributes {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: medium;
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 5px
     }
 }

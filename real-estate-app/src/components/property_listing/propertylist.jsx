@@ -10,7 +10,7 @@ const PropertyList = () => {
 
     const [search, setSearch] = useState("");
     const [propertyTemplet, setPropertyTemplet] = useState([]);
-    const [showimage, setShowImage] = useState(false)
+    const [filteredProperties, setFilteredProperties] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/alldata", {
@@ -23,18 +23,13 @@ const PropertyList = () => {
         }).then(data => {
             console.log(data);
             setPropertyTemplet(data.locationcollection);
+            setFilteredProperties(data.locationcollection.filter(val => val.generalInfo.propertyInfo.ppdid.includes(search)))
         }).catch(e => {
             console.log(e);
         })
 
-    }, [])
+    }, [search])
 
-    const openImage = () => {
-        setShowImage(true)
-    }
-
-
-    console.log(propertyTemplet)
 
     return (
         <>
@@ -66,7 +61,41 @@ const PropertyList = () => {
                 </div>
 
                 <div>
-                    {propertyTemplet.map((val, index) => {
+
+
+                    {filteredProperties.map((val, index) => {
+                        return (
+                            <div className='data' key={val.generalInfo.propertyInfo.ppdid}>
+                                <div className='item'>{val.generalInfo.propertyInfo.ppdid} </div>
+                                <div className='item' ><i className="fa fa-camera fa-2x" aria-hidden="true"></i></div>
+                                <div className='item'>{val.generalInfo.propertyInfo.basicInfo.property}</div>
+                                <div className='item'>{val.generalInfo.mobile}</div>
+                                <div className='item'>{val.generalInfo.propertyInfo.totalArea}</div>
+                                <div className='item'>02</div>
+                                <div className='item'>sold</div>
+                                <div className='item'>09</div>
+                                <div className='item'>Action</div>
+                            </div>
+                        )
+                    })}
+
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default PropertyList;
+
+
+
+
+
+
+
+
+
+{/* {propertyTemplet.map((val, index) => {
                         return (
                             <>
                                 < div className='data' key={val.generalInfo.propertyInfo.ppdid}>
@@ -82,16 +111,5 @@ const PropertyList = () => {
                                 </div>
                             </>
                         )
-                    })}
-
-
-                </div>
-            </div>
-        </>
-    )
-}
-
-export default PropertyList;
-
-
+                    })} */}
 {/* <img src={`http://localhost:8080/api/images/${val.generalInfo.image}`} alt="" /> */ }
