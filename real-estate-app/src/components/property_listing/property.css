@@ -1,0 +1,122 @@
+body {
+    background-color: #f6f4f4;
+}
+
+.Search {
+    font-family: 'Source Sans Pro';
+    font-size: normal;
+    background-color: #f6f4f4;
+    margin-left: 22%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.Add_property {
+    font-family: 'Source Sans Pro';
+    font-size: normal;
+    background-color: #f6f4f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 60%;
+    width: 60%;
+}
+
+.Add_property button {
+    background-color: #6AB4F8;
+    padding: .3rem;
+    border-radius: 1.5rem;
+    color: white;
+    border: transparent;
+    font-size: normal;
+}
+
+.Search_input {
+    width: 90%;
+    font-size: normal;
+}
+
+.Search_input input {
+    padding: .4rem;
+    border-radius: 1rem;
+    border: transparent;
+    width: auto;
+}
+
+.Search_input button {
+    padding: .1rem .1rem;
+    border-radius: .1rem;
+    border: transparent;
+}
+
+.attributes {
+    margin: 1rem 1rem;
+    /* text-align: center; */
+    width: 78%;
+    height: 2.5rem;
+    border: transparent;
+    background-color: #FFFFFF;
+    margin-left: 22%;
+    border-radius: 5rem;
+    font-size: large;
+    display: inline-block;
+}
+
+.name {
+    display: inline-block;
+    padding: .2rem .2rem .2rem;
+    margin-left: none;
+    margin-left: 2rem;
+    width: 5rem;
+    color: #284E91;
+}
+
+.data {
+    margin: .1rem .1rem;
+    text-align: center;
+    border: transparent;
+    background-color: #FFFFFF;
+    margin-left: 22%;
+    width: 78%;
+    height: 2.5rem;
+    border-radius: 5rem;
+    font-size: normal;
+}
+
+.item {
+    display: inline-block;
+    padding: .2rem .2rem .2rem;
+    margin-left: none;
+    margin-left: 2rem;
+    width: 5rem;
+    color: black;
+    font-size: normal;
+}
+
+.map-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    background-color: #FFFFFF;
+    border-radius: 5rem;
+    padding: 0.5rem;
+    margin-left: 22%;
+}
+
+.item {
+    padding: 0.5rem;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    flex-basis: calc(33.33% - 2px);
+}
+
+@media screen and (max-width: 768px) {
+    .item {
+        flex-basis: calc(50% - 2px);
+    }
+}

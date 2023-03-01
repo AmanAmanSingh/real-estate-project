@@ -1,25 +1,28 @@
 const mongoose = require("mongoose");
 
 const generalInfoScehma = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true,
     },
     mobile: {
         type: Number,
         required: true,
+        minLength: 10,
+        maxLength: 12,
     },
     postedby: {
         type: String,
-        enum: ["dealer", "self"],
-        default: "self"
+        enum: ["dealer", "owner"],
+        default: "owner"
     },
     saletype: {
-        enum: ["Transactional", "Solution", "Consultative", "Provocative"],
-        default: "Transactional"
+        type: String
     },
     feature: {
         type: String,
+        enum: ["gym", "pool", "garden", "auditorium"],
+        default: "garden"
     },
     PPDpackage: {
         type: String,
@@ -27,10 +30,6 @@ const generalInfoScehma = new mongoose.Schema({
     image: {
         type: String,
         required: true
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
     },
     basicInfo: {
         type: mongoose.Schema.Types.ObjectId,

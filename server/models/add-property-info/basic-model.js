@@ -4,7 +4,6 @@ const basicInfoSchema = new mongoose.Schema({
     property: {
         type: String,
         enum: ["plot", "house", "flat"],
-        default: "plot",
         required: true
     },
     negotable: {
@@ -33,12 +32,10 @@ const basicInfoSchema = new mongoose.Schema({
     },
     bankLoan: {
         type: String,
-        enum: ["sbi", "axis"],
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        enum: ["yes", "no"],
+        default: "no"
     }
+
 }, { timestamps: true });
 
 module.exports = mongoose.model("Basicinfo", basicInfoSchema)
