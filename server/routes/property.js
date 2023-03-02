@@ -85,56 +85,23 @@ router.post("/api/v4/property", async (req, res) => {
 })
 
 
-
-//REQUIRED FIELD POST REQUEST
-router.post("/api/v4/require", upload, async (req, res) => {
-    try {
-        const { image } = req.file
-        const requireInfodetails = await requireInfo.create({
-            ...req.body,
-            image: req.file.filename,
-        })
-        return res.status(200).json({
-            message: "success",
-            requireInfodetails
-        })
-    } catch (e) {
-        return res.status(400).json({
-            message: e.message
-        })
-    }
-})
-
-//REQUIRED FIELD GET REQUEST
-router.get("/requireinfo", async (req, res) => {
-    try {
-        const requiredData = await requireInfo.find();
-        return res.status(200).json({
-            message: "success",
-            requiredData
-        })
-    } catch (e) {
-        return res.status(400).json({
-            mesaage: e.mesaage
-        })
-    }
-})
-
-
-
 //GET ALL DATA OF A PROPERTY
 router.get("/api/alldata", async (req, res) => {
     try {
-
         const locationcollection = await locationInfo.find().populate({
             path: "generalInfo",
+            select: "mobile image generalInfo -_id",
             populate: {
                 path: "propertyInfo",
+                select: "totalArea ppdid propertyInfo -_id",
                 populate: {
                     path: "basicInfo",
+                    select: "property basicInfo -_id",
                 }
             }
-        })
+        }).select("-_id generalInfo propertyInfo basicInfo");
+
+
         return res.status(200).json({
             message: "success",
             locationcollection,
@@ -155,3 +122,53 @@ router.get("/api/images/:fileName", (req, res) => {
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //REQUIRED FIELD POST REQUEST
+// router.post("/api/v4/require", upload, async (req, res) => {
+//     try {
+//         const { image } = req.file
+//         const requireInfodetails = await requireInfo.create({
+//             ...req.body,
+//             image: req.file.filename,
+//         })
+//         return res.status(200).json({
+//             message: "success",
+//             requireInfodetails
+//         })
+//     } catch (e) {
+//         return res.status(400).json({
+//             message: e.message
+//         })
+//     }
+// })
+
+
+// //REQUIRED FIELD GET REQUEST
+// router.get("/requireinfo", async (req, res) => {
+//     try {
+//         const requiredData = await requireInfo.find();
+//         return res.status(200).json({
+//             message: "success",
+//             requiredData
+//         })
+//     } catch (e) {
+//         return res.status(400).json({
+//             mesaage: e.mesaage
+//         })
+//     }
+// })

@@ -10,7 +10,6 @@ const PropertyFormInfo = () => {
     let basicInfo = propertyContext.basicid;
     // console.log(basicInfo)
 
-
     const navigate = useNavigate()
     const [propertyData, setPropertyData] = useState({
         length: "",

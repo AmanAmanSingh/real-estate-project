@@ -23,4 +23,4 @@ const requiredSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model("require", requiredSchema)
+// module.exports = mongoose.model("require", requiredSchema)

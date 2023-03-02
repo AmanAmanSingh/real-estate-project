@@ -25,7 +25,6 @@ const PropertyList = () => {
         }).catch(e => {
             console.log(e);
         })
-
     }, [search])
 
 
