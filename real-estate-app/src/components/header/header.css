@@ -5,7 +5,7 @@
 
 .header {
     margin-left: 15%;
-    border-bottom: 1px solid pink;
+    border-bottom: 3px solid #d5f4ef;
     height: 75px;
     background-color: white;
     display: flex;
@@ -17,7 +17,8 @@
 
 .left {
     margin-left: 10%;
-    font-size: large;
+    font-size: .9rem;
+    color: grey;
 }
 
 .right {
@@ -30,11 +31,31 @@
     padding: auto;
     border-style: none;
     height: 10%;
-
 }
 
 
 .icon_search {
     position: relative;
 
+}
+
+#logout-button {
+    background-color: rgb(3, 45, 66);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: none;
+}
+
+#icon {
+    margin-right: .7rem;
+}
+
+#logout-button:hover {
+    background-color: rgb(17, 135, 195);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
 }

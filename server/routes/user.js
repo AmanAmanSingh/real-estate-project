@@ -6,8 +6,7 @@ const usermodel = require("../models/user-model")
 const cors = require("cors")
 const jwt = require("jsonwebtoken")
 
-//const secret = "RESTAPI"
-//const validator = require('validator');
+
 const salt = 10;
 dotenv.config()
 router.use(cors())

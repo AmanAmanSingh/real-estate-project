@@ -6,7 +6,8 @@
     border: 2px solid grey;
     border-radius: 20px;
     align-items: center;
-    margin-left: 30%;
+    margin-left: 29.8%;
+    margin-bottom: 8px;
 }
 
 .general-li {
@@ -22,9 +23,11 @@
     font-family: sans-serif;
     color: #1b1a1a;
     font-size: small;
-    background-color: #e4f0f4;
+    background-color: #d5f4ef;
     margin-left: 30%;
     padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px 10px 10px 10px;
 }
 
 .genral-form-flexbox {

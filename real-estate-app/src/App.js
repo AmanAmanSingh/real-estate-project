@@ -6,15 +6,14 @@ import BasicInfoForm from './components/addproperty/basic/basicform';
 import GeneralFormInfo from './components/addproperty/general/generalform';
 import LocationFormInfo from './components/addproperty/location/location';
 import PropertyFormInfo from './components/addproperty/property/propertyform';
-//
+
 import Sidebar from "./components/sidebar/sidebar";
 import Header from "./components/header/header";
 import PropertyList from './components/property_listing/propertylist';
 import Protected from './components/protectedRoutes/protectedroutes';
 import SignUp from './components/SignUp/SignUp';
 import SignIn from './components/SignIn/SignIn';
-// import SignIn from './components/SignIn/SignIn';
-// import SignUp from './components/SignUp/SignUp';
+
 function App() {
   const [basicid, setbasicid] = useState("");
   const [propertyid, setpropertyid] = useState("");

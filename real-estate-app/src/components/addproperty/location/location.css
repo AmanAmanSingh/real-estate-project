@@ -6,7 +6,8 @@
     border: 2px solid grey;
     border-radius: 20px;
     align-items: center;
-    margin-left: 30%;
+    margin-left: 29.8%;
+    margin-bottom: 8px;
 }
 
 .location-li {
@@ -40,10 +41,12 @@
     color: #1b1a1a;
     font-size: small;
     margin-left: 30%;
+    margin-top: 20px;
+    border-radius: 10px 10px 10px 10px;
 }
 
 .location-form-container {
-    background-color: #e4f0f4;
+    background-color: #d5f4ef;
     padding: 20px;
 }
 

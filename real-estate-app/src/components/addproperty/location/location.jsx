@@ -51,13 +51,14 @@ const LocationFormInfo = () => {
         }).then(res => {
             return res.json();
         }).then(data => {
-            console.log(data);
+            // console.log(data);
             locationContext.setgeneralid(data.generaldetails._id);
             navigate("/propertylist");
-        }).catch(error => {
-            navigate("/propertylist");
-            console.error(error);
         })
+            .catch(error => {
+                navigate("/propertylist");
+                console.error(error);
+            })
     };
 
     return (

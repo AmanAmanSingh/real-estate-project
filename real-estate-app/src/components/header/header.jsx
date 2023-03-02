@@ -14,12 +14,10 @@ const Header = () => {
             <div className="left"> USER ID:{userid}
             </div>
             <div className="right">
-                <i className="fa fa-user" aria-hidden="true"></i>
-
-                <button onClick={Logoutbutton}>
+                <button id="logout-button" onClick={Logoutbutton}>
+                    <i className="fa fa-user" id="icon" aria-hidden="true"></i>
                     Logout
                 </button>
-
             </div>
         </div>
     )

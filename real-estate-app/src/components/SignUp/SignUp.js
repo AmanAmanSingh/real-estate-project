@@ -9,12 +9,14 @@ const SignUp = () => {
         password: "",
         confirmpassword: ""
     })
+    const [err, setError] = useState("")
     const navigate = useNavigate()
     const handlechange = (e) => {
         setuserdetail({ ...userdetail, [e.target.name]: e.target.value })
     }
     const handlesubmit = async (e) => {
         e.preventDefault();
+
 
         const data = await fetch(`${url}/signup`, {
             method: "POST",
@@ -23,15 +25,20 @@ const SignUp = () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(userdetail),
-        }).then((data) => data.json())
-            .then(data => {
-                console.log(data)
+        }).then((data) => {
+            return data.json();
+        }).then(data => {
+            console.log(data);
+            if (data.status == "failed") {
+                setError(data.message);
+            } else {
                 navigate("/");
-            }).catch(e => {
-                console.log(e)
-            })
-
+            }
+        }).catch(e => {
+            console.log(e)
+        })
     };
+
     return (
         <>
             <div>
@@ -46,6 +53,7 @@ const SignUp = () => {
                                 placeholder="Email ID"
                                 name="email"
                                 onChange={handlechange}
+                                required
                             /></div>
                             <div><input
                                 className="Signup-input"
@@ -53,6 +61,7 @@ const SignUp = () => {
                                 placeholder="Password"
                                 name="password"
                                 onChange={handlechange}
+                                required
                             /></div>
                             <div><input
                                 className="Signup-input"
@@ -60,7 +69,7 @@ const SignUp = () => {
                                 placeholder="Confirm Password"
                                 name="confirmpassword"
                                 onChange={handlechange}
-
+                                required
                             /></div>
                             <div>
                                 <button className="Signup-input"
@@ -68,6 +77,9 @@ const SignUp = () => {
                             </div>
                         </form>
                     </div>
+                </div>
+                <div id="error-message">
+                    <center> {err && <h5>{err}</h5>}</center>
                 </div>
                 <div id="noaccount"><h4><Link to="/">Sign In</Link>
                 </h4>

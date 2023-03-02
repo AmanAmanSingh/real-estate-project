@@ -9,6 +9,7 @@ const generalInfo = require("../models/add-property-info/general-model");
 const locationInfo = require("../models/add-property-info/location-model");
 const propertyInfo = require("../models/add-property-info/propertydetail-model");
 
+const requireInfo = require("../models/add-property-info/requiredTemplet-model")
 
 //POST END POINT FOR BASIC DETAILS 
 router.post("/api/v4/basic", async (req, res) => {
@@ -82,6 +83,43 @@ router.post("/api/v4/property", async (req, res) => {
         })
     }
 })
+
+
+
+//REQUIRED FIELD POST REQUEST
+router.post("/api/v4/require", upload, async (req, res) => {
+    try {
+        const { image } = req.file
+        const requireInfodetails = await requireInfo.create({
+            ...req.body,
+            image: req.file.filename,
+        })
+        return res.status(200).json({
+            message: "success",
+            requireInfodetails
+        })
+    } catch (e) {
+        return res.status(400).json({
+            message: e.message
+        })
+    }
+})
+
+//REQUIRED FIELD GET REQUEST
+router.get("/requireinfo", async (req, res) => {
+    try {
+        const requiredData = await requireInfo.find();
+        return res.status(200).json({
+            message: "success",
+            requiredData
+        })
+    } catch (e) {
+        return res.status(400).json({
+            mesaage: e.mesaage
+        })
+    }
+})
+
 
 
 //GET ALL DATA OF A PROPERTY

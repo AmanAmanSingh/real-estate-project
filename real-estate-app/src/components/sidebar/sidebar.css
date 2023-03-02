@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.propertylink {
+    color: #2289FF;
+}
+
 .logo {
     font-size: 2rem;
     margin-top: 2rem;

@@ -42,7 +42,6 @@ const BasicInfoForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // console.log(formValues, "handlesubmit")
 
         await fetch('http://localhost:8080/api/v4/basic', {
             method: 'POST',
@@ -53,16 +52,13 @@ const BasicInfoForm = () => {
         }).then(res => {
             return res.json();
         }).then(data => {
-            console.log(data, "resbasic");
+            // console.log(data);
             basicContext.setbasicid(data.basicdetails._id);
             // debugger
             navigate("/propertyinfo")
         }).catch(e => {
             console.log(e)
         })
-
-
-
     };
 
     return (
@@ -118,7 +114,7 @@ const BasicInfoForm = () => {
                         <div>
                             <label>
                                 Property Age <span style={{ color: "red" }}>*</span>:
-                                <input type="number" name="propertyAge" value={formValues.propertyAge} onChange={handleInputChange} required />
+                                <input type="number" name="propertyAge" value={formValues.propertyAge} onChange={handleInputChange} min={2} required />
                             </label>
 
                             <label>

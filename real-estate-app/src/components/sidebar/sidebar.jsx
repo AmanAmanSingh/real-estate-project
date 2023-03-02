@@ -6,7 +6,7 @@ const Sidebar = () => {
       <div className='logo'> LOGO</div>
       <div className='listing'>
         <ul className='list_name'>
-          <li><i className="fa fa-home" aria-hidden="true"></i> <link rel="stylesheet" href="/property" /> Property</li><br />
+          <li className='propertylink'><i className="fa fa-home" aria-hidden="true"></i> Property</li><br />
           <li><i className="fa fa-bell" aria-hidden="true"></i>  Assistance</li><br />
           <li><i className="fa fa-download" aria-hidden="true"></i>  Received Interest</li><br />
           <li><i className="fa fa-arrow-up" aria-hidden="true"></i>  Send Interest</li><br />

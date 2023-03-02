@@ -9,7 +9,6 @@ import Header from '../header/header';
 const PropertyList = () => {
 
     const [search, setSearch] = useState("");
-    const [propertyTemplet, setPropertyTemplet] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
 
     useEffect(() => {
@@ -21,8 +20,7 @@ const PropertyList = () => {
         }).then(res => {
             return res.json();
         }).then(data => {
-            console.log(data);
-            setPropertyTemplet(data.locationcollection);
+            // console.log(data);
             setFilteredProperties(data.locationcollection.filter(val => val.generalInfo.propertyInfo.ppdid.includes(search)))
         }).catch(e => {
             console.log(e);
@@ -62,7 +60,6 @@ const PropertyList = () => {
 
                 <div>
 
-
                     {filteredProperties.map((val, index) => {
                         return (
                             <div className='data' key={val.generalInfo.propertyInfo.ppdid}>
@@ -72,7 +69,7 @@ const PropertyList = () => {
                                 <div className='item'>{val.generalInfo.mobile}</div>
                                 <div className='item'>{val.generalInfo.propertyInfo.totalArea}</div>
                                 <div className='item'>02</div>
-                                <div className='item'>sold</div>
+                                <div className='item' style={{ color: "#416899", backgroundColor: "#F5FAF5" }} >UnSold</div>
                                 <div className='item'>09</div>
                                 <div className='item'>Action</div>
                             </div>

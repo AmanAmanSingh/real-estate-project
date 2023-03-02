@@ -55,9 +55,8 @@ const GeneralFormInfo = () => {
         }).then((response) => {
             return response.json()
         }).then((data) => {
-            console.log(data, "generalinfo");
+            // console.log(data, "generalinfo");
             generalContext.setgeneralid(data.generaldetails._id);
-            // debugger
             navigate("/locationinfo")
         }).catch((error) => {
             console.error(error);

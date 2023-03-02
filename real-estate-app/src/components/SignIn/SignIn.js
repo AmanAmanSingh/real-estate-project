@@ -27,7 +27,6 @@ const SignIn = () => {
         }).then((data) => {
             return data.json()
         }).then((response) => {
-
             if (response.status == "failed") {
                 setError(response.message)
             } else {
@@ -52,10 +51,11 @@ const SignIn = () => {
                         <form onSubmit={handlesubmit}>
                             <div><input
                                 className="Signin-input"
-                                type="text"
+                                type="email"
                                 placeholder="email"
                                 name="email"
                                 onChange={handlechange}
+                                required
                             /></div>
                             <div><input
                                 className="Signin-input"
@@ -63,7 +63,7 @@ const SignIn = () => {
                                 placeholder="Password"
                                 name="password"
                                 onChange={handlechange}
-
+                                required
                             /></div>
                             <div>
                                 <button className="Signin-input" id="button-signin" type="submit">Sign In</button>
@@ -74,7 +74,9 @@ const SignIn = () => {
                         </form>
                     </div>
                 </div>
-                {err && <h5>{err}</h5>}
+                <div id="error-message">
+                    <center> {err && <h5>{err}</h5>}</center>
+                </div>
                 <div id="noaccount"><h4>Don't have an Account ? <Link to="/signup"> Sign Up</Link>
                 </h4>
                 </div>
@@ -84,3 +86,4 @@ const SignIn = () => {
     )
 }
 export default SignIn
+
