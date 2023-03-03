@@ -32,6 +32,7 @@ function App() {
             <Route path='/propertyinfo' element={<Protected><PropertyFormInfo /></Protected>} />
             <Route path='/generalinfo' element={<Protected><GeneralFormInfo /></Protected>} />
             <Route path='/locationinfo' element={<Protected> <LocationFormInfo /></Protected>} />
+            <Route path="*" element={<center style={{ color: "red", fontSize: "45px" }}> ' 404 Page not found'</center>} />
           </Routes>
         </BrowserRouter>
       </idContext.Provider>
