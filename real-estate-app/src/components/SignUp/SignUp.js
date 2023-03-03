@@ -10,13 +10,15 @@ const SignUp = () => {
         confirmpassword: ""
     })
     const [err, setError] = useState("")
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const handlechange = (e) => {
         setuserdetail({ ...userdetail, [e.target.name]: e.target.value })
     }
     const handlesubmit = async (e) => {
         e.preventDefault();
 
+        setError("verfying...");
 
         const data = await fetch(`https://real-estate-server-o2q8.onrender.com/signup`, {
             method: "POST",
@@ -79,7 +81,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div id="error-message">
-                    <center> {err && <h5>{err}</h5>}</center>
+                    <center> {err && <h5 style={{ color: "darkGreen" }} >{err}</h5>}</center>
                 </div>
                 <div id="noaccount"><h4><Link to="/">Sign In</Link>
                 </h4>

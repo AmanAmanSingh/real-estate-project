@@ -15,7 +15,9 @@ const SignIn = () => {
         setuserdetail({ ...userdetail, [e.target.name]: e.target.value })
     }
     const handlesubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        setError("verfying...");
 
         const data = await fetch(`https://real-estate-server-o2q8.onrender.com/signin`, {
             method: "POST",
@@ -27,6 +29,7 @@ const SignIn = () => {
         }).then((data) => {
             return data.json()
         }).then((response) => {
+
             if (response.status == "failed") {
                 setError(response.message)
             } else {
@@ -75,7 +78,7 @@ const SignIn = () => {
                     </div>
                 </div>
                 <div id="error-message">
-                    <center> {err && <h5>{err}</h5>}</center>
+                    <center> {err && <h5 style={{ color: "darkGreen" }}>{err}</h5>}</center>
                 </div>
                 <div id="noaccount"><h4>Don't have an Account ? <Link to="/signup"> Sign Up</Link>
                 </h4>

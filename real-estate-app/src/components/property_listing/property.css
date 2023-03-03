@@ -6,7 +6,6 @@ body {
     font-family: 'Source Sans Pro';
     font-size: normal;
     background-color: #ebf3f1;
-    ;
     margin-left: 20%;
     height: 5rem;
     display: flex;
@@ -138,6 +137,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.loader-img {
+    width: 20%;
+    height: auto;
+    object-fit: cover;
+    margin-top: 3%;
+    margin-left: 44%;
+
 }
 
 @media screen and (max-width: 768px) {

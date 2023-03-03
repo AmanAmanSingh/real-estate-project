@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../sidebar/sidebar';
 import Header from '../header/header';
-
+import loader from "../loader/loader-gif.gif"
 
 const PropertyList = () => {
 
@@ -59,7 +59,7 @@ const PropertyList = () => {
                 </div>
 
                 <div>
-
+                    {(!filteredProperties.length) && <img className="loader-img" src={loader} alt="loader-image" />}
                     {filteredProperties.map((val, index) => {
                         return (
                             <div className='data' key={val.generalInfo.propertyInfo.ppdid}>

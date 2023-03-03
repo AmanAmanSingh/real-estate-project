@@ -14,7 +14,6 @@ const propertyInfo = require("../models/add-property-info/propertydetail-model")
 router.post("/api/v4/basic", async (req, res) => {
 
     try {
-
         const basicdetails = await BasicInfo.create(req.body)
         return res.status(200).json({
             message: "success",
@@ -127,17 +126,20 @@ router.get("/api/alldata", async (req, res) => {
 
         const locationcollection = await locationInfo.find().populate({
             path: "generalInfo",
+            select: "mobile image generalInfo -_id",
             populate: {
                 path: "propertyInfo",
+                select: "ppdid totalArea  propertyInfo -_id",
                 populate: {
                     path: "basicInfo",
+                    select: "property basicInfo -_id"
                 }
             }
-        })
+        }).select("-_id generalInfo propertyInfo basicInfo");
+
         return res.status(200).json({
             message: "success",
             locationcollection,
-
         });
     } catch (err) {
         return res.status(400).json({
