@@ -6,7 +6,6 @@ const usermodel = require("../models/user-model")
 const cors = require("cors")
 const jwt = require("jsonwebtoken")
 
-
 const salt = 10;
 dotenv.config()
 router.use(cors());
@@ -102,13 +101,15 @@ router.post("/signin", async (req, res) => {
             }
             if (result) {
                 const token = jwt.sign({
-                    payload: data._id
+                    data: data._id,
                 }, process.env.SECRET_KEY);
+
                 return res.status(200).json({
                     status: "success",
                     message: "Login Succesfull",
                     token,
-                    id: data._id
+                    id: data._id,
+                    role: data.role
                 })
             } else {
                 return res.status(400).json({
@@ -124,6 +125,5 @@ router.post("/signin", async (req, res) => {
         })
     }
 })
-
 
 module.exports = router

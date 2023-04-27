@@ -19,8 +19,6 @@ app.use(express.urlencoded({ extended: true }))
 
 
 
-
-
 app.use("/", propertyRouter);
 app.use("/", userRouter);
 app.listen(PORT || process.env.PORT, () => { console.log(`server started at PORT ${PORT}`) })

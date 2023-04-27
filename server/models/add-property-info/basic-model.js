@@ -30,6 +30,9 @@ const basicInfoSchema = new mongoose.Schema({
     propertyDescription: {
         type: String,
     },
+    user: {
+        type: String,
+    },
     bankLoan: {
         type: String,
         enum: ["yes", "no"],

@@ -20,6 +20,8 @@ const LocationFormInfo = () => {
         longitude: "",
     });
 
+    const Token = localStorage.getItem("authtoken");
+
     const handleClear = () => {
         setFormData({
             email: "",
@@ -42,9 +44,11 @@ const LocationFormInfo = () => {
         event.preventDefault();
         const dataToSend = { ...formData, generalInfo };
 
-        fetch("https://real-estate-server-o2q8.onrender.com/api/v4/location", {
+        https://real-estate-server-o2q8.onrender.com/api/v4/location
+        fetch("http://localhost:8081/api/v4/location", {
             method: "POST",
             headers: {
+                authorization: Token,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(dataToSend),

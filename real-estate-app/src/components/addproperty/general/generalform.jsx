@@ -9,7 +9,6 @@ const GeneralFormInfo = () => {
     const navigate = useNavigate();
 
     const generalContext = useContext(idContext);
-
     let propertyInfo1 = generalContext.propertyid;
 
     const [username, setUsername] = useState("");
@@ -21,10 +20,11 @@ const GeneralFormInfo = () => {
     const [image, setImage] = useState(null);
     const [propertyInfo, setpropertyInfo] = useState("");
 
+    const Token = localStorage.getItem("authtoken");
+
     useEffect(() => {
         setpropertyInfo(propertyInfo1)
     }, [])
-
 
     const handleClear = () => {
         setUsername("")
@@ -35,7 +35,6 @@ const GeneralFormInfo = () => {
         setPPDPackage("")
         setImage(null)
     }
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -48,9 +47,13 @@ const GeneralFormInfo = () => {
         formData.append("PPDpackage", PPDpackage);
         formData.append("image", image);
         formData.append("propertyInfo", propertyInfo);
+        // https://real-estate-server-o2q8.onrender.com/api/v4/general
 
-        fetch("https://real-estate-server-o2q8.onrender.com/api/v4/general", {
+        fetch("http://localhost:8081/api/v4/general", {
             method: "POST",
+            headers: {
+                authorization: Token,
+            },
             body: formData,
         }).then((response) => {
             return response.json()
@@ -96,6 +99,7 @@ const GeneralFormInfo = () => {
                                     value={mobile}
                                     onChange={(event) => setMobile(event.target.value)}
                                     required
+                                    min={2}
                                     minLength="10"
                                     maxLength="12"
                                 />

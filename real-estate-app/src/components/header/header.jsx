@@ -6,6 +6,7 @@ const Header = () => {
     const Logoutbutton = () => {
         localStorage.setItem("authtoken", "");
         localStorage.setItem("id", "");
+        localStorage.setItem("role", "");
         navigate("/")
     };
     const userid = localStorage.getItem("id").slice(0, -18);

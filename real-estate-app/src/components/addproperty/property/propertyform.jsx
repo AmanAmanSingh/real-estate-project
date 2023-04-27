@@ -8,10 +8,9 @@ const PropertyFormInfo = () => {
 
     const propertyContext = useContext(idContext);
     let basicInfo = propertyContext.basicid;
-    // console.log(basicInfo)
 
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
     const [propertyData, setPropertyData] = useState({
         length: "",
         breadth: "",
@@ -27,6 +26,9 @@ const PropertyFormInfo = () => {
         electricity: "",
         facing: "east",
     });
+
+    const Token = localStorage.getItem("authtoken");
+
     const handleClear = () => {
         setPropertyData({
             length: "",
@@ -54,9 +56,12 @@ const PropertyFormInfo = () => {
         const dataToSend = { ...propertyData, basicInfo };
         event.preventDefault();
         // console.log(propertyData);
-        await fetch('https://real-estate-server-o2q8.onrender.com/api/v4/property', {
+        // https://real-estate-server-o2q8.onrender.com/api/v4/property
+
+        await fetch('http://localhost:8081/api/v4/property', {
             method: 'POST',
             headers: {
+                authorization: Token,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(dataToSend),
@@ -65,7 +70,6 @@ const PropertyFormInfo = () => {
         }).then(data => {
             // console.log(data);
             propertyContext.setpropertyid(data.propertydetails._id);
-            // debugger
             navigate("/generalinfo");
         }).catch(e => {
             console.log(e)
@@ -98,6 +102,7 @@ const PropertyFormInfo = () => {
                                 <input
                                     type="number"
                                     name="length"
+                                    min={2}
                                     value={propertyData.length}
                                     onChange={handleInputChange}
                                 />
@@ -107,6 +112,7 @@ const PropertyFormInfo = () => {
                                 <input
                                     type="number"
                                     name="breadth"
+                                    min={2}
                                     value={propertyData.breadth}
                                     onChange={handleInputChange}
                                 />
@@ -118,6 +124,7 @@ const PropertyFormInfo = () => {
                                 <input
                                     type="number"
                                     name="totalArea"
+                                    min={2}
                                     value={propertyData.totalArea}
                                     onChange={handleInputChange}
                                     required

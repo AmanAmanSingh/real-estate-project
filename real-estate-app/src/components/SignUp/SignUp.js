@@ -19,8 +19,8 @@ const SignUp = () => {
         e.preventDefault();
 
         setError("verfying...");
-
-        const data = await fetch(`https://real-estate-server-o2q8.onrender.com/signup`, {
+        // https://real-estate-server-o2q8.onrender.com/signup
+        const data = await fetch(`http://localhost:8080/signup`, {
             method: "POST",
             headers: {
                 Accept: "application/json",

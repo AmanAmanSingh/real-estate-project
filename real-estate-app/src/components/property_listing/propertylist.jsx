@@ -11,10 +11,14 @@ const PropertyList = () => {
     const [search, setSearch] = useState("");
     const [filteredProperties, setFilteredProperties] = useState([]);
 
+    const Token = localStorage.getItem("authtoken");
+
     useEffect(() => {
-        fetch("https://real-estate-server-o2q8.onrender.com/api/alldata", {
+        //   https://real-estate-server-o2q8.onrender.com/api/alldata
+        fetch("http://localhost:8081/api/alldata", {
             method: "GET",
             headers: {
+                authorization: Token,
                 'Content-Type': 'application/json',
             },
         }).then(res => {
@@ -60,6 +64,7 @@ const PropertyList = () => {
 
                 <div>
                     {(!filteredProperties.length) && <img className="loader-img" src={loader} alt="loader-image" />}
+
                     {filteredProperties.map((val, index) => {
                         return (
                             <div className='data' key={val.generalInfo.propertyInfo.ppdid}>

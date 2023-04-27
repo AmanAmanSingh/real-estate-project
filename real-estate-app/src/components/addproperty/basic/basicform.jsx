@@ -8,9 +8,7 @@ const BasicInfoForm = () => {
 
     const basicContext = useContext(idContext);
     // console.log(basicContext);
-
     const navigate = useNavigate();
-
     const [formValues, setFormValues] = useState({
         property: "plot",
         negotable: "yes",
@@ -21,11 +19,13 @@ const BasicInfoForm = () => {
         propertyDescription: "",
         bankLoan: "no"
     });
+    const Token = localStorage.getItem("authtoken");
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormValues({ ...formValues, [name]: value });
     };
+
 
     const handleClear = () => {
         setFormValues({
@@ -42,19 +42,20 @@ const BasicInfoForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        // https://real-estate-server-o2q8.onrender.com/api/v4/basic
 
-        await fetch('https://real-estate-server-o2q8.onrender.com/api/v4/basic', {
+        await fetch('http://localhost:8081/api/v4/basic', {
             method: 'POST',
             headers: {
+                authorization: Token,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formValues),
         }).then(res => {
             return res.json();
         }).then(data => {
-            // console.log(data);
+            console.log(data);
             basicContext.setbasicid(data.basicdetails._id);
-            // debugger
             navigate("/propertyinfo")
         }).catch(e => {
             console.log(e)
@@ -99,7 +100,7 @@ const BasicInfoForm = () => {
                         <div>
                             <label>
                                 Price <span style={{ color: "red" }}>*</span>:
-                                <input type="number" name="price" value={formValues.price} onChange={handleInputChange} required />
+                                <input type="number" name="price" value={formValues.price} onChange={handleInputChange} min={2} required />
                             </label>
 
                             <label>
