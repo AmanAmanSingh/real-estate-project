@@ -44,7 +44,7 @@ const BasicInfoForm = () => {
         event.preventDefault();
         // https://real-estate-server-o2q8.onrender.com/api/v4/basic
 
-        await fetch('http://localhost:8081/api/v4/basic', {
+        await fetch('https://real-estate-server-o2q8.onrender.com/api/v4/basic', {
             method: 'POST',
             headers: {
                 authorization: Token,

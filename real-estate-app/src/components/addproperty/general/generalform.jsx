@@ -49,7 +49,7 @@ const GeneralFormInfo = () => {
         formData.append("propertyInfo", propertyInfo);
         // https://real-estate-server-o2q8.onrender.com/api/v4/general
 
-        fetch("http://localhost:8081/api/v4/general", {
+        fetch("https://real-estate-server-o2q8.onrender.com/api/v4/general", {
             method: "POST",
             headers: {
                 authorization: Token,

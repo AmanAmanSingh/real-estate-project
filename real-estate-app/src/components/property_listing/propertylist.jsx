@@ -15,7 +15,7 @@ const PropertyList = () => {
 
     useEffect(() => {
         //   https://real-estate-server-o2q8.onrender.com/api/alldata
-        fetch("http://localhost:8081/api/alldata", {
+        fetch("https://real-estate-server-o2q8.onrender.com/api/alldata", {
             method: "GET",
             headers: {
                 authorization: Token,

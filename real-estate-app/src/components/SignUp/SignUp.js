@@ -20,7 +20,7 @@ const SignUp = () => {
 
         setError("verfying...");
         // https://real-estate-server-o2q8.onrender.com/signup
-        const data = await fetch(`http://localhost:8080/signup`, {
+        const data = await fetch(`https://real-estate-server-o2q8.onrender.com/signup`, {
             method: "POST",
             headers: {
                 Accept: "application/json",

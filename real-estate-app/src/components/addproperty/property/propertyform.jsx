@@ -58,7 +58,7 @@ const PropertyFormInfo = () => {
         // console.log(propertyData);
         // https://real-estate-server-o2q8.onrender.com/api/v4/property
 
-        await fetch('http://localhost:8081/api/v4/property', {
+        await fetch(' https://real-estate-server-o2q8.onrender.com/api/v4/property', {
             method: 'POST',
             headers: {
                 authorization: Token,
